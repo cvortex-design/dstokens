@@ -1,15 +1,13 @@
-// build.js
-const StyleDictionary = require('style-dictionary');
+const StyleDictionaryPackage = require('style-dictionary').extend('config.json');
 
-const myStyleDictionary = StyleDictionary.extend({
-  // configuration
-});
+StyleDictionaryPackage.buildAllPlatforms();
 
-myStyleDictionary.buildAllPlatforms();
-
-// You can also extend Style Dictionary multiple times:
-const myOtherStyleDictionary = myStyleDictionary.extend({
-  // new configuration
-});
-
-myOtherStyleDictionary.buildAllPlatforms();
+StyleDictionaryPackage.registerTransform({
+    type: `value`,
+    transitive: true,
+    name: `aliases`,
+    matcher: (token) => {},
+    transformer: (token) => {
+      // token.value will be resolved and transformed at this point
+    }
+  })
