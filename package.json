@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "style-dictionary": "^3.7.0",
+    "token-transformer": "^0.0.19"
+  },
+
+"scripts": {
+  "build": "node build.js"
+}
+}
