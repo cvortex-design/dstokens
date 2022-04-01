@@ -1,13 +1,28 @@
 const StyleDictionaryPackage = require('style-dictionary').extend('config.json');
 
-StyleDictionaryPackage.buildAllPlatforms();
 
 StyleDictionaryPackage.registerTransform({
-    type: `value`,
-    transitive: true,
-    name: `aliases`,
-    matcher: (token) => {},
-    transformer: (token) => {
-      // token.value will be resolved and transformed at this point
+    name: 'shadow/scss',
+    type: 'value',
+    matcher: function(prop) {
+      return prop.attributes.category === 'shadow';
+    },
+    transformer: function(prop) {
+      // destructure shadow values from original token value
+      const {
+        x,
+        y,
+        blur,
+        spread,
+        color,
+        alpha
+      } = prop.original.value
+      
+      // convert hex code to rgba string
+      const shadowColor = tinycolor(color)
+      shadowColor.setAlpha(alpha)
+      shadowColor.toRgbString()
+      
+      return `${x}px ${y}px ${blur}px ${spread}px ${shadowColor}`
     }
-  })
+  });

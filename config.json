@@ -1,12 +1,12 @@
 {
-  "source": ["tokens.json"],
+  "source": ["tokens/*.json"],
   "platforms": {
     "scss": {
       "transformGroup": "scss",
       "buildPath": "build/web/",
       "files": [{
         "destination": "_variables.scss",
-        "format": "scss/map-deep"
+        "format": "scss/variables"
       }]
     }
   }
