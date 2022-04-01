@@ -5,7 +5,7 @@
       "transformGroup": "scss",
       "buildPath": "build/web/",
       "files": [{
-        "destination": "_variables.scss",
+        "destination": "variables.scss",
         "format": "scss/variables"
       }]
     }
