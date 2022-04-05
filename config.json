@@ -1,13 +1,30 @@
 {
-  "source": ["tokens/*.json"],
+  "source": [
+    "tokens/**/*.json"
+  ],
   "platforms": {
-    "scss": {
-      "transformGroup": "scss",
-      "buildPath": "build/web/",
-      "files": [{
-        "destination": "variables.scss",
-        "format": "scss/variables"
-      }]
+    "ts": {
+      "transformGroup": "js",
+      "files": [
+        {
+          "format": "javascript/module",
+          "destination": "colors.js",
+          "filter": {
+            "attributes": {
+              "type": "color"
+            }
+          }
+        },
+        {
+          "format": "typescript/module-declarations",
+          "destination": "colors.d.ts",
+          "filter": {
+            "attributes": {
+              "type": "color"
+            }
+          }
+        }
+      ]
     }
   }
 }

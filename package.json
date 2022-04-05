@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "json-to-ts": "^1.7.0",
+    "lodash": "^4.17.21",
     "style-dictionary": "^3.7.0"
   },
   "scripts": {
