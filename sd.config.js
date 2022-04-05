@@ -2,51 +2,33 @@ const StyleDictionary= require('style-dictionary');
 const tinycolor = require("tinycolor2");
 
 
-const toPx = (value) =>
-  styleDictionary.transform["size/remToPx"].transformer({ value });
+function isShadow(token) {
+  return token.type === 'boxShadow';
+}
 
-const shadowMatcher = (prop) => prop.type === "boxShadow";
-
-const webShadowTransformer = (prop) => {
-  const {
-    blurRadius,
-    color,
-    offsetX,
-    offsetY,
-    spreadRadius,
-  } = prop.original.value;
-
-  return `${toPx(offsetX)} ${toPx(offsetY)} ${toPx(blurRadius)} ${toPx(
-    spreadRadius
-  )} ${tinycolor(color).toRgbString()}`;
-};
-
-module.exports.shadowCSSTransform = {
-  matcher: shadowMatcher,
-  name: "shadow/css",
-  transformer: webShadowTransformer,
-  type: "value",
-};
-
-module.exports.shadowjsTransform = {
-  matcher: shadowMatcher,
-  name: "shadow/js",
-  transformer: webShadowTransformer,
-  type: "value",
-};
+StyleDictionary.registerTransform({
+  name: 'shadow/spreadShadow',
+  type: 'value',
+  matcher: isShadow,
+  transformer: (token) => {
+    const shadow = Object.values(token.value);
+    const [x, y, blur, spread, color] = shadow.map((s) => s.toString());
+    return `${x}px ${y}px ${blur}px ${spread}px ${color}`;
+  }
+});
 
 module.exports = {
  
   source: ["tokens.json"],
 
   platforms: {
-    js: {
-      transformGroup: `js`,
-      buildPath: `build/js/`,
+    css: {
+      transformGroup: `css`,
+      buildPath: `build/css/`,
       files: [
         {
-          destination: `_colors.js`,
-          format: `javascript/es6`,
+          destination: `_colors.css`,
+          format: `css/variables`,
           options: { 
             outputReferences: true
           },
@@ -56,8 +38,8 @@ module.exports = {
           }
         },
         {
-          destination: `_sizes.js`,
-          format: `javascript/es6`,
+          destination: `_sizes.css`,
+          format: `css/variables`,
           options: { 
             outputReferences: true
           },
@@ -66,8 +48,8 @@ module.exports = {
           }
         },
           {
-            destination: `_spacings.js`,
-            format: `javascript/es6`,
+            destination: `_spacings.css`,
+            format: `css/variables`,
             options: { 
               outputReferences: true
             },
@@ -76,12 +58,12 @@ module.exports = {
             }
         },
         {
-          destination: `_shadows.js`,
-          format: `javascript/es6`,
+          destination: `_shadows.css`,
+          format: `css/variables`,
           options: { 
             outputReferences: true
           },
-          transforms: [`attribute/cti`, `name/cti/kebab`, `shadow/css`, `shadow/js`],
+          transforms: [`attribute/cti`, `name/cti/kebab`, `shadow/spreadShadow`],
           filter: function (token) {
             return token.type === `boxShadow`;
             
