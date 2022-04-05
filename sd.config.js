@@ -28,9 +28,9 @@ module.exports.shadowCSSTransform = {
   type: "value",
 };
 
-module.exports.shadowSCSSTransform = {
+module.exports.shadowjsTransform = {
   matcher: shadowMatcher,
-  name: "shadow/scss",
+  name: "shadow/js",
   transformer: webShadowTransformer,
   type: "value",
 };
@@ -40,13 +40,13 @@ module.exports = {
   source: ["tokens.json"],
 
   platforms: {
-    scss: {
-      transformGroup: `scss`,
-      buildPath: `build/scss/`,
+    js: {
+      transformGroup: `js`,
+      buildPath: `build/js/`,
       files: [
         {
-          destination: `_colors.scss`,
-          format: `scss/variables`,
+          destination: `_colors.js`,
+          format: `javascript/es6`,
           options: { 
             outputReferences: true
           },
@@ -56,8 +56,8 @@ module.exports = {
           }
         },
         {
-          destination: `_sizes.scss`,
-          format: `scss/variables`,
+          destination: `_sizes.js`,
+          format: `javascript/es6`,
           options: { 
             outputReferences: true
           },
@@ -66,8 +66,8 @@ module.exports = {
           }
         },
           {
-            destination: `_spacings.scss`,
-            format: `scss/variables`,
+            destination: `_spacings.js`,
+            format: `javascript/es6`,
             options: { 
               outputReferences: true
             },
@@ -76,12 +76,12 @@ module.exports = {
             }
         },
         {
-          destination: `_shadows.scss`,
-          format: `scss/variables`,
+          destination: `_shadows.js`,
+          format: `javascript/es6`,
           options: { 
             outputReferences: true
           },
-          transforms: [`attribute/cti`, `name/cti/kebab`, `shadow/css`, `shadow/scss`],
+          transforms: [`attribute/cti`, `name/cti/kebab`, `shadow/css`, `shadow/js`],
           filter: function (token) {
             return token.type === `boxShadow`;
             
