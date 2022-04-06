@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 05 Apr 2022 18:37:15 GMT
+ * Generated on Wed, 06 Apr 2022 16:27:28 GMT
  */
 
 :root {
@@ -68,6 +68,8 @@
   --luna-700: #dbebed;
   --luna-600: #ecf5f6;
   --luna-500: #ffffff;
+  --color-border-strong: var(--solar-700);
+  --color-border-default: var(--solar-600);
   --color-input-border-default: var(--luna-900);
   --color-text-tertiary: var(--solar-800);
   --color-text-secondary: var(--luna-900);
@@ -79,6 +81,9 @@
   --color-brand-primary: var(--mercury-500);
   --color-background-light-alt: var(--solar-500);
   --color-background-light: var(--luna-500);
+  --color-table-cell-background-light-alt: var(--color-background-light-alt);
+  --color-table-cell-background-light: var(--color-background-light);
+  --color-border-hover: var(--color-brand-primary);
   --color-input-text-helper-danger: var(--color-brand-danger);
   --color-input-text-helper-default: var(--color-text-tertiary);
   --color-input-text-entry: var(--color-text-primary);

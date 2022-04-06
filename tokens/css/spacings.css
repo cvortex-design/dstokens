@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 05 Apr 2022 18:37:15 GMT
+ * Generated on Wed, 06 Apr 2022 16:27:28 GMT
  */
 
 :root {
@@ -25,9 +25,8 @@
   --spacing-2: 4;
   --spacing-1: 2;
   --spacing-0: 0;
-  --space-form-v-spacing-lg: var(--spacing-19);
-  --space-form-v-spacing-md: var(--spacing-10);
-  --space-form-v-spacing-sm: var(--spacing-8);
+  --space-form-lg: var(--spacing-19);
+  --space-form-md: var(--spacing-10);
   --space-form-v-spacing-xs: var(--spacing-4);
   --space-form-h-spacing-md: var(--spacing-8);
   --space-form-h-spacing-lg: var(--spacing-14);
