@@ -1,5 +1,5 @@
 {
-  "name": "dstokens",
+  "name": "@cvortex-design/dstokens",
   "version": "1.0.0",
   "description": "cVortex Design Tokens",
   "main": "index.js",
@@ -105,7 +105,7 @@
     "cVortex"
   ],
   "author": "Ana Takahashi",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/cvortex-design/dstokens/issues"
   },
